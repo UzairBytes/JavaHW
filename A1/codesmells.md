@@ -1,31 +1,3 @@
-# Markdown
-
-Markdown is a plain-text file format. There are lots of programming tools that use Markdown, and it's useful and
-easy to learn. Hash marks (the number sign) indicate headers. Asterisks indicate lists.
-
-# Template
-
-Use the following Code Smell template (copy and paste it at the end of this file and then edit it; don't include the "Begin template" or "End template" lines):
-
-==== Begin template ====
-## Code Smell: [Write the code smell name]
-
-### Code Smell Category: [Write the code smell category name]
-
-### List of classes and line numbers involved:
-
-* [Write a class and list of line numbers, one class per asterisk, that describe the smell]
-
-### Description:
-
-[In your own words, explain how this particular code smells.]
-
-### Solution:
-
-[In your own words, explain how you might solve this code smell:
-how would you refactor the code?]
-==== End template ====
-
 # List of code smells
 
 ## Code Smell: Long Method
@@ -52,6 +24,7 @@ The easiest solution would be to remove the excessive loop statements in the cod
 by 'Extracting the Method' into a new one. This would allow mistakes to be visible in shortened methods and assist in
 figuring out why the program isn't running correctly. You can also decompose the conditionals, of which there are
 several, by creating separate methods for the statements in the "if" and "else" brackets.
+
 
 ## Code Smell: Comments
 
@@ -85,6 +58,7 @@ for comments to explain. As for the comments that describe what each part of the
 be of no difficulty for other programmers to read so either the programmer thinks that no one else is as smart as them
 or their code needs fixing. Either way, the comments need to be removed.
 
+
 ## Code Smell: Lazy Class
 
 ### Code Smell Category: Dispensables
@@ -107,6 +81,7 @@ I would attach the setOrder method to a different class just for reference. Of c
 to establish connection between my program and the already created generic software, but, when I get to that, I can
 create a relevant class. In the meantime, I would delete this whole class.
 
+
 ## Code Smell: Large Class
 
 ### Code Smell Category: Bloaters
@@ -128,6 +103,7 @@ can possibly be overlooked. However, in this case, the class has methods for bot
 instance variables for both. Therefore, the easiest solution for this particular smell is to extract the code for
 picking or sequencing and put it in a new class. That way, the methods and variables still exist but the class isn't
 an unacceptable length. Furthermore, this makes it easier to spot code that is not behaving as intended.
+
 
 ## Code Smell: Switch Statements
 
