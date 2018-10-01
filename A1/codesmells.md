@@ -106,3 +106,25 @@ but doesn't even use it, resorting to merely printing "->Order list set by gener
 I would attach the setOrder method to a different class just for reference. Of course, as the programmer, I have
 to establish connection between my program and the already created generic software, but, when I get to that, I can
 create a relevant class. In the meantime, I would delete this whole class.
+
+## Code Smell: Large Class
+
+### Code Smell Category: Bloaters
+
+### List of classes and line numbers involved:
+
+* WarehouseManager class (13-202)
+
+### Description:
+
+To put it simply, this class 189 lines of code. There are also 10 instance variables in the class. The class is too
+large for a programmer to alter a variable or a method without having to comb through the rest of the class and the
+other classes as well.
+
+### Solution:
+
+If a class is large but the variables and methods are completely relevant and a necessary part of the class, this smell
+can possibly be overlooked. However, in this case, the class has methods for both picking AND sequencing as well as
+instance variables for both. Therefore, the easiest solution for this particular smell is to extract the code for
+picking or sequencing and put it in a new class. That way, the methods and variables still exist but the class isn't
+an unacceptable length. Furthermore, this makes it easier to spot code that is not behaving as intended.
