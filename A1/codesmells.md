@@ -52,3 +52,35 @@ The easiest solution would be to remove the excessive loop statements in the cod
 by 'Extracting the Method' into a new one. This would allow mistakes to be visible in shortened methods and assist in
 figuring out why the program isn't running correctly. You can also decompose the conditionals, of which there are
 several, by creating separate methods for the statements in the "if" and "else" brackets.
+
+## Code Smell: Comments
+
+### Code Smell Category: Dispensables
+
+### List of classes and line numbers involved:
+
+* Warehouse Simulation class (most of lines 13-40)
+* Order class (most of lines 7-46)
+* OrderListManager class (most of lines 7-58)
+* GenericPathSoftware class (lines 10-15)
+* PickerOrderList class (most of lines 6-96
+* SequencerOrderList class (most of lines 6-96)
+* TranslationTable class (most of lines 14-23 and 45-51)
+* WarehouseManager class (most of lines 10-61, 76-80, 87-92, 108-113, 128-135, 156-161, and 179-186)
+
+### Description:
+
+When I first skimmed through the code, the smell that was most obvious and, perhaps, most annoying was from the number
+of comments. While a comment here and there is not too much of an issue, in many of the aforementioned classes, the
+number of lines of comments match or exceed the lines of code. Not only are the eye-watering comments making it
+difficult to discern the actual code, the sheer number of them hint at the fact that there is something suspicious about
+the code itself. Comments are often used excessively by programmers who are too hasty or careless and try to hide their
+flawed code.
+
+### Solution:
+
+Delete the comments that are detailing the methods purpose and the parameters. Rename the parameters and methods that
+are unclear. If the names of the parameters, variables, and methods are written with reasonable thought, there is no need
+for comments to explain. As for the comments that describe what each part of the code is doing, well-written code should
+be of no difficulty for other programmers to read so either the programmer thinks that no one else is as smart as them
+or their code needs fixing.
