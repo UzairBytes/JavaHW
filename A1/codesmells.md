@@ -8,7 +8,6 @@
 
 * WarehouseSimulation class (lines 41-96 of the "start" method)
 
-
 ### Description:
 
 This method has approximately 45 lines of code. Not only does this make it difficult for me as the replacement
