@@ -84,3 +84,25 @@ are unclear. If the names of the parameters, variables, and methods are written 
 for comments to explain. As for the comments that describe what each part of the code is doing, well-written code should
 be of no difficulty for other programmers to read so either the programmer thinks that no one else is as smart as them
 or their code needs fixing.
+
+## Code Smell: Lazy Class
+
+### Code Smell Category: Dispensables
+
+### List of classes and line numbers involved:
+
+* GenericPathSoftware class (all lines)
+
+### Description:
+
+This is supposed to be a mock version of the actual shortest path software that the warehouse already has installed.
+However, because the programmer moved on before finishing it, this class remains useless and a textbook example of a
+lazy class. The comments state that connecting to the actual shortest path software is a to-do which is helpful but
+doesn't explain the need for this class at the moment. The setOrder method in it takes the pickerOrderList as a parameter
+but doesn't even use it, resorting to merely printing "->Order list set by generic software".
+
+### Solution:
+
+I would attach the setOrder method to a different class just for reference. Of course, as the programmer, I have
+to establish connection between my program and the already created generic software, but, when I get to that, I can
+create a relevant class. In the meantime, I would delete this whole class.
