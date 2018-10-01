@@ -83,7 +83,7 @@ Delete the comments that are detailing the methods purpose and the parameters. R
 are unclear. If the names of the parameters, variables, and methods are written with reasonable thought, there is no need
 for comments to explain. As for the comments that describe what each part of the code is doing, well-written code should
 be of no difficulty for other programmers to read so either the programmer thinks that no one else is as smart as them
-or their code needs fixing.
+or their code needs fixing. Either way, the comments need to be removed.
 
 ## Code Smell: Lazy Class
 
@@ -128,3 +128,28 @@ can possibly be overlooked. However, in this case, the class has methods for bot
 instance variables for both. Therefore, the easiest solution for this particular smell is to extract the code for
 picking or sequencing and put it in a new class. That way, the methods and variables still exist but the class isn't
 an unacceptable length. Furthermore, this makes it easier to spot code that is not behaving as intended.
+
+## Code Smell: Switch Statements
+
+### Code Smell Category: Object-Orientation Abusers
+
+### List of classes and line numbers involved:
+
+* WarehouseSimulation class (lines 53-89)
+
+### Description:
+
+While it may seem odd that I'm flagging those lines for a Switch Statement code smell when there's no "Switch" operator,
+according to SourceMaking, a complex sequence of "if" statements is part of this code smell. There are a staggering total of
+10 "if", "else if", and "else" statements in those 30-odd lines of code. It is tedious to trace code through so many
+conditions and it is a real waste of using an object-oriented language like Java that lets you create classes and
+subclasses as often as you want. Furthermore, using so many conditionals casts a programmer in a poor light as it shows
+either a lack of comprehension of the benefits of object-orientation or sheer laziness, both of which do a programmer
+no good career-wise. It also makes the code difficult to alter should it not work as intended, as in this case.
+
+### Solution:
+
+The solution for this is to use the benefits of polymorphism. Instead of using an inane amount of conditionals, create
+subclasses within the class that match cases of the conditionals. Using this code as an example, the subclasses would
+be divided by nextEvent, pickerOrderList.size, and endsWith. This would shorten the code considerably, make it easier
+to trace, and make it easier to spot the flaws that are interfering with the program
