@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * The sliding tiles board.
- * TODO: Make this implement Iterable<Tile>.
  */
 public class Board extends Observable implements Serializable {
 
@@ -27,6 +26,33 @@ public class Board extends Observable implements Serializable {
      * The tiles on the board in row-major order.
      */
     private Tile[][] tiles = new Tile[NUM_ROWS][NUM_COLS];
+
+    @Override
+    public Iterator<Tile> iterator() {
+        Iterator<Tile> iter = new Iterator<Tile>() {
+            private int currentRow = 0;
+            private int currentColumn = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (currentColumn < NUM_COLS - 1 || currentRow < NUM_ROWS - 1)
+                        && tiles[currentRow][currentColumn] != null;
+
+            }
+
+            @Override
+            public Tile next() {
+                if (currentColumn < NUM_COLS - 1) {
+                    return tiles[currentRow][currentColumn++];
+                } else if (currentColumn == NUM_COLS - 1) {
+                    currentColumn = 0;
+                    return tiles[currentRow++][currentColumn];
+                }
+                return null;
+            }
+        };
+        return iter;
+    }
 
     /**
      * A new board of tiles in row-major order.
@@ -46,11 +72,11 @@ public class Board extends Observable implements Serializable {
 
     /**
      * Return the number of tiles on the board.
+     *
      * @return the number of tiles on the board
      */
     int numTiles() {
-        // TODO: fix me
-        return -1;
+        return NUM_COLS * NUM_ROWS;
     }
 
     /**
@@ -73,7 +99,11 @@ public class Board extends Observable implements Serializable {
      * @param col2 the second tile col
      */
     void swapTiles(int row1, int col1, int row2, int col2) {
-        // TODO: swap
+        Tile currentTile1 = this.getTile(row1, col1);
+        Tile currentTile2 = this.getTile(row2, col2);
+
+        tiles[row1][col1] = currentTile2;
+        tiles[row2][col2] = currentTile1;
 
         setChanged();
         notifyObservers();
