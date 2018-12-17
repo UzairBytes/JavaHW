@@ -17,6 +17,7 @@ class BoardManager implements Serializable {
 
     /**
      * Manage a board that has been pre-populated.
+     *
      * @param board the board
      */
     BoardManager(Board board) {
@@ -51,7 +52,16 @@ class BoardManager implements Serializable {
      */
     boolean puzzleSolved() {
         boolean solved = true;
-        // TODO: fix me
+        int backgroundId = 1;
+
+        for (int row = 0; row < board.NUM_ROWS; row++) {
+            for (int col = 0; col < board.NUM_COLS; col++) {
+                if (board.getTile(row, col).getId() != backgroundId) {
+                    solved = false;
+                }
+                backgroundId++;
+            }
+        }
         return solved;
     }
 
@@ -80,16 +90,32 @@ class BoardManager implements Serializable {
     /**
      * Process a touch at position in the board, swapping tiles as appropriate.
      *
-     * @param position the position
+     * @param position of the tile to check
      */
     void touchMove(int position) {
 
-        int row = position / Board.NUM_ROWS;
-        int col = position % Board.NUM_COLS;
+        int row = position / Board.NUM_COLS;
+        int col = position % Board.NUM_ROWS;
         int blankId = board.numTiles();
 
-        // TODO: figure out when to call board.swapTiles. Specifically, if any of the neighbouring
-        // tiles is the blank tile, swap by calling Board's swap method.
+        Tile above = row == 0 ? null : board.getTile(row - 1, col);
+        Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        Tile left = col == 0 ? null : board.getTile(row, col - 1);
+        Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
+
+        if (isValidTap(position)) {
+            if (above != null && above.getId() == blankId) {
+                board.swapTiles(row, col, row - 1, col);
+            } else if (below != null && below.getId() == blankId) {
+                board.swapTiles(row, col, row + 1, col);
+            } else if (left != null && left.getId() == blankId) {
+                board.swapTiles(row, col, row, col - 1);
+            } else if (right != null && right.getId() == blankId) {
+                board.swapTiles(row, col, row, col + 1);
+            }
+
+
+        }
     }
 
 }
