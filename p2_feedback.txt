@@ -1,0 +1,48 @@
+Dear Uzair,
+
+This is the feedback for Phase 2. You were in group group_0622, and here are
+the UTORids of your team members:
+
+	cernigli, chengju3, chudhary, gabejona, guptasi8
+
+When you are working on a team, in a professional setting, good design is related to being a good team member. 
+
+1. Is it easy for other team members to read and understand your code? (Consider your Javadoc and comments, and line-by-line style.) 
+
+2. Is it easy for other people to extend your code and add new features? (Consider the Open/Closed Principle and Test Driven Design.)
+
+3. Is it easy for other team members to write code that interacts with yours? (Consider encapsulation, naming conventions, the use of interfaces, etc.)
+
+The list continues, and includes almost every topic from CSC207.
+
+Your project makes good use of MVC, Observer, and Strategy design patterns, unit tests, Javadoc, and inheritance.
+
+A user playing your games will see arbitrary undos and different levels for 2048, as well as personal and global scoreboards. Instead of using number of tiles left for Checkers, maybe base it on number of moves it took you to win, or a combination of both. In future, you may want to reconsider using black fonts on a dark background.
+
+A good next step would be to use generic types like List instead of ArrayLists when defining objects. Also, in Java, package names should be lowercase_with_underscores. Several of your classes are missing Javadoc. Lastly, look for places where longer methods can be refactored. For example, in TwentyBoardManager, merTilesInDir is much too long and overly complicated.
+
+There is also an automatic reformatting feature that you can use to make sure your spacing is the same from class to class.
+
+As you continue to practice object-oriented programming, you will see that your past experience informs your decisions. It will be easier to make good design decisions before you code, rather than refactoring at every step. 
+
+We hope that you enjoyed this course and that your experience with the project has been useful to you.
+
+Here is your grade breakdown for the project. The "Design" mark is the letter
+grade for your Phase 2 software design converted to a numeric mark, using the
+upper end of the appropriate grade range. Here are a few examples: A has a
+range of 85-89, so we would use 89%, resulting in a grade of 10.68/12; another
+example is B-, which has a range of 70-72, so we would use 72%, or 8.64/12.
+You can find the full scale here:
+
+    http://www.artsci.utoronto.ca/newstudents/transition/academic/grading
+
+If the Phase 2 "Total" percentage was higher than your Phase 1 mark, we
+replaced your Phase 1 mark with your Phase 2 mark when calculating your
+overall course grade.
+
+   utor: chudhary
+   sec: 0301
+   testing: 2 / 2
+   presentation: 2 / 3
+   design: 10.68 / 12
+   p2_total: 14.68 / 17
